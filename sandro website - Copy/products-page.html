@@ -1,0 +1,65 @@
+<!-- main-product-page.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Page</title>
+    <link rel="stylesheet" href="cart-page.css" />
+    <!-- Add CSS file here -->
+  </head>
+  <body>
+    <h1>Product List</h1>
+
+    <div class="product" data-name="Product 1" data-price="29.99">
+      <h2>Product 1</h2>
+      <p>Description of Product 1.</p>
+      <p>Price: $29.99</p>
+      <button class="addToCartBtn">Add to Cart</button>
+    </div>
+
+    <div class="product" data-name="Product 2" data-price="49.99">
+      <h2>Product 2</h2>
+      <p>Description of Product 2.</p>
+      <p>Price: $49.99</p>
+      <button class="addToCartBtn">Add to Cart</button>
+    </div>
+
+    <div class="product" data-name="Product 3" data-price="19.99">
+      <h2>Product 3</h2>
+      <p>Description of Product 3.</p>
+      <p>Price: $19.99</p>
+      <button class="addToCartBtn">Add to Cart</button>
+    </div>
+
+    <script>
+      // Event listener for all "Add to Cart" buttons
+      document.querySelectorAll(".addToCartBtn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const productDiv = this.parentElement;
+          const productName = productDiv.getAttribute("data-name");
+          const productPrice = parseFloat(
+            productDiv.getAttribute("data-price")
+          );
+
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          let existingProduct = cart.find((item) => item.name === productName);
+
+          // Update quantity if product already exists in the cart
+          if (existingProduct) {
+            existingProduct.quantity += 1;
+          } else {
+            cart.push({
+              name: productName,
+              price: productPrice,
+              quantity: 1,
+            });
+          }
+
+          localStorage.setItem("cart", JSON.stringify(cart));
+          window.location.href = "cart-page.html"; // Redirect to the Cart Page
+        });
+      });
+    </script>
+  </body>
+</html>

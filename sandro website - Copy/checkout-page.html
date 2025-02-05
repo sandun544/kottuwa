@@ -1,0 +1,39 @@
+<!-- checkout-page.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+  </head>
+  <body>
+    <h1>Checkout</h1>
+    <form id="checkoutForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" required />
+      <button type="submit">Complete Purchase</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("checkoutForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          // Gather user info
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+
+          alert(
+            `Thank you for your purchase, ${name}! A confirmation email will be sent to ${email}.`
+          );
+
+          // Clear cart after purchase
+          localStorage.removeItem("cart");
+          window.location.href = "main-product-page.html"; // Redirect to products page
+        });
+    </script>
+  </body>
+</html>

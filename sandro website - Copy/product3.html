@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product 01 - T800 Smart Watch</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      /* Simple styling for layout */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+
+      header {
+        background-color: #333;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 20px;
+        max-width: 1200px;
+        margin: auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-images {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .product-images img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .product-details {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .product-details h1 {
+        margin: 0;
+        color: #333;
+      }
+
+      .product-details h2 {
+        color: #666;
+        margin: 10px 0;
+      }
+
+      .product-details p {
+        margin: 20px 0;
+        line-height: 1.6;
+        color: #444;
+      }
+
+      .product-details .price {
+        font-size: 1.5rem;
+        color: #e63946;
+        margin-bottom: 20px;
+      }
+
+      .product-details .discount-price {
+        text-decoration: line-through;
+        color: #999;
+        margin-left: 10px;
+      }
+
+      .buy-now-btn,
+      .add-to-cart-btn,
+      .add-to-wishlist-btn {
+        background-color: #e63946;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin-right: 10px; /* Space between buttons */
+      }
+
+      .buy-now-btn:hover,
+      .add-to-cart-btn:hover,
+      .add-to-wishlist-btn:hover {
+        background-color: #b02630;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+        .product-details {
+          text-align: center; /* Center-align text on smaller screens */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <h1>Product Details</h1>
+    </header>
+
+    <!-- Main Product Section -->
+    <div class="container">
+      <!-- Product Images Section (Left) -->
+      <div class="product-images">
+        <img src="images/p1.jpg" alt="T800 Smart Watch - Main Image" />
+        <img src="images/p1-side.jpg" alt="T800 Smart Watch - Side View" />
+        <img src="images/p1-back.jpg" alt="T800 Smart Watch - Back View" />
+      </div>
+
+      <!-- Product Details Section (Right) -->
+      <div class="product-details">
+        <h1>T800 Smart Watch</h1>
+        <h2>LKR 1999.99</h2>
+        <p>
+          The T800 Smart Watch is the perfect combination of style and
+          functionality. Featuring a sleek design, customizable watch faces,
+          health tracking features, and seamless connectivity with your
+          smartphone, this watch is an ideal companion for your everyday life.
+          Get instant notifications, monitor your fitness levels, and enjoy the
+          convenience of having all the essential features right on your wrist.
+        </p>
+        <div class="price">
+          Special Offer: LKR 1999.99<span class="discount-price">
+            LKR 2939.99</span
+          >
+        </div>
+        <a href="#" class="buy-now-btn">Buy It Now</a>
+        <a href="#" class="add-to-cart-btn">Add to Cart</a>
+        <a href="#" class="add-to-wishlist-btn">Add to Wishlist</a>
+      </div>
+    </div>
+  </body>
+</html>

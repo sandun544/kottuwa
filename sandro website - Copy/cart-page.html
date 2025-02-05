@@ -1,0 +1,132 @@
+<!-- cart-page.html -->
+<!-- cart-page.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Add CSS file here -->
+  </head>
+  <body>
+    <h1>Your Cart</h1>
+    <p>Product: Awesome Product</p>
+    <p>Price: $49.99</p>
+    <p>Quantity: 1</p>
+
+    <button id="checkoutBtn">Proceed to Checkout</button>
+
+    <script>
+      // Handle the checkout button here (you can redirect to a checkout page or add more logic)
+      document
+        .getElementById("checkoutBtn")
+        .addEventListener("click", function () {
+          alert("Proceeding to checkout..."); // This can be redirected to a checkout page
+        });
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="cart-page.css" />
+    <!-- Add CSS file here -->
+  </head>
+  <body>
+    <h1>Your Cart</h1>
+    <div id="cartItems"></div>
+
+    <button id="checkoutBtn">Proceed to Checkout</button>
+
+    <script>
+      // Load cart items from localStorage and display them
+      document.addEventListener("DOMContentLoaded", function () {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartItemsDiv = document.getElementById("cartItems");
+
+        if (cart.length === 0) {
+          cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+        } else {
+          cart.forEach((item) => {
+            let itemHTML = `<p>${item.name}: $${item.price} (Quantity: ${item.quantity})</p>`;
+            cartItemsDiv.innerHTML += itemHTML;
+          });
+        }
+      });
+
+      // Handle the checkout button
+      document
+        .getElementById("checkoutBtn")
+        .addEventListener("click", function () {
+          alert("Proceeding to checkout..."); // This can redirect to a checkout page
+        });
+    </script>
+  </body>
+</html>
+<!-- cart-page.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="cart-page.css" />
+    <!-- Add CSS file here -->
+  </head>
+  <body>
+    <h1>Your Cart</h1>
+    <div id="cartItems"></div>
+    <p id="totalPrice"></p>
+    <button id="checkoutBtn">Proceed to Checkout</button>
+
+    <script>
+      // Load cart items from localStorage and display them
+      document.addEventListener("DOMContentLoaded", function () {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartItemsDiv = document.getElementById("cartItems");
+        let totalPriceDiv = document.getElementById("totalPrice");
+        let total = 0;
+
+        if (cart.length === 0) {
+          cartItemsDiv.innerHTML = "<p>Your cart is empty.</p>";
+        } else {
+          cart.forEach((item, index) => {
+            let itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            let itemHTML = `
+                        <div>
+                            <p>${item.name}: $${item.price} (Quantity: ${item.quantity})</p>
+                            <button class="removeBtn" data-index="${index}">Remove</button>
+                        </div>`;
+            cartItemsDiv.innerHTML += itemHTML;
+          });
+          totalPriceDiv.innerHTML = `<strong>Total: $${total.toFixed(
+            2
+          )}</strong>`;
+        }
+
+        // Remove item from the cart
+        document.querySelectorAll(".removeBtn").forEach((button) => {
+          button.addEventListener("click", function () {
+            let index = this.getAttribute("data-index");
+            cart.splice(index, 1); // Remove item from cart
+            localStorage.setItem("cart", JSON.stringify(cart)); // Update localStorage
+            location.reload(); // Refresh the page to update the cart
+          });
+        });
+      });
+
+      // Handle the checkout button
+      document
+        .getElementById("checkoutBtn")
+        .addEventListener("click", function () {
+          alert("Proceeding to checkout..."); // Implement checkout process here
+        });
+    </script>
+  </body>
+</html>
